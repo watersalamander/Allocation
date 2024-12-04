@@ -1,5 +1,4 @@
 import streamlit as st
-import plotly_express as px
 
 st.set_page_config(page_title="Dashboard", layout="wide", initial_sidebar_state="expanded")
 
@@ -7,41 +6,30 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.image("https://moneyexpo.net/wp-content/uploads/2024/04/Merkel.jpg", use_column_width=True)
 
-col4, col5 =  st.columns([1,1])
-with col4:
-    gold = st.number_input('Gold',
+gold = st.number_input('Gold',
                        min_value=0.0,
                        max_value=100.0,
                        value=25.0,
                        step=1.0)
-    bitcoin = st.number_input('Bitcoin',
+bitcoin = st.number_input('Bitcoin',
                         min_value=0.0,
                         max_value=100.0,
                         value=25.0,
                         step=1.0)
-    reits = st.number_input('REIT',
+reits = st.number_input('REIT',
                         min_value=0.0,
                         max_value=100.0,
                         value=25.0,
                         step=1.0)
-    stock = st.number_input('Stocks',
+stock = st.number_input('Stocks',
                         min_value=0.0,
                         max_value=100.0,
                         value=25.0,
                         step=1.0)
-    data = {
+data = {
     'Asset': ['Gold', 'Bitcoin', 'REITs', 'Stock'],
     'Values': [gold, bitcoin, reits, stock]
     }
-    
-with col5:
-    fig = px.pie(data, 
-                 names='Asset', 
-                 values='Values', 
-                 title='Asset Allocation',
-                 hole=0.3)
-    st.plotly_chart(fig)
-
 
 button = st.button('Calculate')
 
